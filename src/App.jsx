@@ -4,51 +4,67 @@ import { data } from "./assets/data/data.jsx";
 function App() {
   const [showDetails, setShowDetails] = useState(false); // Detay sayfasını kontrol eden state
   const [selectedCountry, setSelectedCountry] = useState(null); // Tıklanan ülkeyi saklayan state
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false); // Tema değişikliği için
 
   function handleCountryClick(country) {
     setSelectedCountry(country);
     setShowDetails(true); // Detay sayfasını göster
   }
 
-  function HandleBackClick() {
+  function handleBackClick() {
     setShowDetails(false);
+  }
+
+  function handleBorderCountryClick(borderCountry) {
+    setSelectedCountry(borderCountry);
+  }
+
+  function changeTheme() {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    if (newTheme) {
+      document.body.classList.add("darkMode");
+    }
+    else {
+      document.body.classList.remove("darkMode");
+    }
   }
 
   return (
     <div>
       {showDetails ? (
         <>
-          <Header />
-          <CountryDetails country={selectedCountry} onBackClick={HandleBackClick} />
+          <Header changeTheme={changeTheme} isDarkMode={isDarkMode} />
+          <CountryDetails country={selectedCountry} onBackClick={handleBackClick} onClickBorderCountry={handleBorderCountryClick} />
         </>
       ) : (
         <>
-          <Header />
-          <Input />
-          <CountryContent onCountryClick={handleCountryClick} />
+          <Header changeTheme={changeTheme} isDarkMode={isDarkMode} />
+          <Input
+            country={country}
+            setCountry={setCountry}
+            region={region}
+            setRegion={setRegion} />
+
+          <CountryContent
+            country={country}
+            region={region}
+            onCountryClick={handleCountryClick}
+          />
         </>
       )}
     </div>
   );
 }
 
-// tema değişikliği için;
-function ChangeTheme() {
-  if (document.body.classList.contains('darkMode')) {
-    document.body.classList.remove('darkMode');
-  }
-  else {
-    document.body.classList.add('darkMode');
-  }
-}
-
-function Header() {
+function Header({ changeTheme }) {
   return (
     <>
       <div className="header">
         <h1>Where in the world?</h1>
-        <button onClick={ChangeTheme}>
-          <img src="/img/moon-icon-countries.svg" alt="Search Icon" />
+        <button onClick={changeTheme}>
           Dark Mode
         </button>
       </div>
@@ -56,38 +72,47 @@ function Header() {
   )
 }
 
-function Input() {
+const regions = Array.from(new Set(data.map(x => x.region)));
+
+function Input({ setCountry, setRegion }) {
+
+  function handleChange(e) {
+    setCountry(e.target.value.toLowerCase());
+  }
+
+  function handleSelectChange(e) {
+    setRegion(e.target.value);
+  }
+
   return (
     <>
       <div className="input-area">
         <div className="input">
           <img src="/img/search-icon.svg" alt="Search Icon" />
-          <input type="text" placeholder="Search for a country..." />
+          <input type="text" onChange={handleChange} placeholder="Search for a country..." />
         </div>
         <div className="select-area">
-          <select className="regions">
-            <option value="filter">Filter by Region</option>
-            <option value="Africa">Africa</option>
-            <option value="America">America</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
+          <select onChange={handleSelectChange} className="regions">
+            <option value="">Filter by Region</option>
+            {regions.map(x => <option key={x}> {x}</option>)}
           </select>
         </div>
-      </div>
+      </div >
     </>
   );
 }
 
-function CountryContent({ onCountryClick }) {
-  const dataItems = data.map(x => <Countries
-    key={x.cca3}
-    name={x.name.common}
-    population={x.population}
-    region={x.region}
-    capital={x.capital}
-    img={x.flags.png}
-    onCountryClick={() => onCountryClick(x)} />)
+function CountryContent({ country, region, onCountryClick }) {
+  const dataItems = data
+    .filter(x => x.name.common.toLowerCase().includes(country) && x.region.includes(region))
+    .map(x => <Countries
+      key={x.name.common}
+      name={x.name.common}
+      population={x.population}
+      region={x.region}
+      capital={x.capital}
+      img={x.flags.png}
+      onCountryClick={() => onCountryClick(x)} />)
 
   return (
     <>
@@ -126,37 +151,58 @@ function Countries({ name, img, population, region, capital, onCountryClick }) {
   )
 }
 
-function CountryDetails({ country, onBackClick }) {
+function CountryDetails({ country, onBackClick, onClickBorderCountry }) {
   if (!country) return null; // Eğer seçilen ülke yoksa render etme
 
   return (
     <>
       <div className="country-details">
-        <button onClick={onBackClick}>
-          <img src="/img/back-icon.svg" alt="Back Icon" />
+        <button className="backBtn" onClick={onBackClick}>
           Back
         </button>
         <div className="card-details">
           <img src={country.flags.png} alt={country.name} />
-          <div className="card-detail-first">
-            <h1>{country.name.common}</h1>
-            <h3>{country.name.official}</h3>
-            <p><strong>Population:</strong>{country.population}</p>
-            <p><strong>Region:</strong>{country.region}</p>
-            <p><strong>Sub Region:</strong>{country.subregion ? country.subregion : "-"}</p>
-            <p><strong>Capital:</strong> {country.capital.join(", ")}</p>
+          <div className="card-details-info">
+            <div className="card-detail-first">
+              <h1>{country.name.common}</h1>
+              <p><strong>Native Name: </strong>{country.name.official}</p>
+              <p><strong>Population:</strong>{country.population}</p>
+              <p><strong>Region: </strong>{country.region}</p>
+              <p><strong>Sub Region: </strong>{country.subregion ? country.subregion : "-"}</p>
+              <p><strong>Capital: </strong> {country.capital.join(", ")}</p>
+            </div>
+            <div className="card-detail-second">
+              <p><strong>Top Level Domain: </strong> {country.tld.join(", ")}</p>
+              <p><strong>Currencies: </strong>{Object.values(country.currencies)
+                .map((x) => x.name)
+                .join(", ")}</p>
+              <p><strong>Languages: </strong>{Object.values(country.languages).join(", ")}</p>
+            </div>
+            <div className="border-countries-content">
+              <h4>Border Countries:</h4>
+              <div className="border-countries">
+                <BorderCountries borders={country.borders} onClickBorderCountry={onClickBorderCountry} />
+              </div>
+            </div>
           </div>
-          <div className="card-detail-second">
-            <p><strong>Top Level Domain:</strong> {country.tld.join(", ")}</p>
-            <p><strong>Currencies: </strong>{Object.values(country.currencies)
-              .map((x) => x.name)
-              .join(", ")}</p>
-            <p><strong>Languages: </strong>{Object.values(country.languages).join(", ")}</p>
-          </div>
+
         </div>
       </div>
     </>
   )
+}
+
+function BorderCountries({ borders, onClickBorderCountry }) {
+  return borders ?
+    borders.map((x) => {
+      const countryData = data.find((y) => y.cca3 === x);
+      return (
+        <button onClick={() => onClickBorderCountry(countryData)} key={x} className="borderBtn">
+          {countryData.name.common}
+        </button>
+      );
+    })
+    : "-";
 }
 
 export default App;

@@ -1,7 +1,5 @@
 .header {
-  max-width: 343px;
-  margin-inline: auto;
-  padding-block: 30px;
+  padding: 30px 16px;
   display: flex;
   justify-content: space-between;
   color: #111517;
@@ -17,12 +15,13 @@
   font-size: 12px;
   font-weight: 600;
   line-height: 16.37px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  background-image: url(/img/moon-icon-countries.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 25px;
 }
 
 .input-area {
@@ -37,6 +36,7 @@
   border-radius: 5px;
   box-shadow: 0px 2px 9px 0px #0000000E;
   margin-bottom: 40px;
+  margin-top: 24px;
 }
 
 .input input {
@@ -117,20 +117,129 @@
   margin-inline: auto;
 }
 
+.backBtn {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 0px 7px 0px #0000004B;
+  padding-block: 6px;
+  margin-top: 46px;
+  margin-bottom: 70px;
+  border-style: none;
+  width: 136px;
+  background-image: url(/img/back-icon.svg);
+  background-repeat: no-repeat;
+  background-position: 30% 50%;
+  padding-left: 39px;
+}
+
+.card-detail-first {
+  margin-top: 44px;
+  margin-bottom: 32px;
+  color: #111517;
+}
+
+.card-detail-first h1 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.01px;
+  margin-bottom: 16px;
+}
+
+.card-detail-first p, .card-detail-second {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 32px;
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.card-details img {
+  width: 320px;
+  height: 229px;
+}
+
+.card-detail-second {
+  margin-bottom: 34px;
+  color: #111517;
+}
+
+.border-countries-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.border-countries {
+  display: flex;
+  gap: 10px;
+}
+
+.borderBtn {
+  border: 1px solid #979797;
+  box-shadow: 0px 0px 4px 1px #0000001B;
+  background-color: #fff;
+  border-style: none;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 16.37px;
+  padding-block: 6px;
+  width: 96px;
+  color: #111517;
+}
+
+.border-countries-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #111517;
+}
+
 /* Dark Theme */
 
 body.darkMode {
-  background-color: #121721;
+  background-color: #202C36;
+}
+
+.darkMode {
+  .header, 
+  input, 
+  .input, 
+  .regions, 
+  .countryItem,
+  .borderBtn,
+  .backBtn {
+    background-color: #2B3844;
+  }
+
+  .header h1, 
+  .header button, 
+  input::placeholder, 
+  .regions, 
+  .card-info h2, 
+  .card-info p,
+  .borderBtn,
+  .backBtn,
+  .card-detail-first,
+  .card-detail-second,
+  .border-countries-content h4 {
+    color: #fff;
+  }
+
+  .header button {
+    background-image: url(/img/moon-icon-dark-mode.svg);
+  }
+
+  .backBtn {
+    background-image: url(/img/back-icon-dark-mode.svg);
+  }
 }
 
 /* Tablet Start */
 
 @media (width >= 768px) {
-
-  .header {
-    max-width: 688px;
-    padding-block: 30px;
-  }
 
   .input-area {
     max-width: 688px;
@@ -153,8 +262,13 @@ body.darkMode {
     width: 100%;
   }
 
+  .input-area {
+    margin-top: 40px;
+  }
+
   .input {
     width: 300px;
+    margin-top: 0;
   }
 
   .country-details {
@@ -167,18 +281,31 @@ body.darkMode {
 @media (width >= 1280px) {
 
   .header {
-    max-width: 1280px;
-    padding-block: 23px;
+    padding: 23px 80px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 32.74px;
+  }
+
+  .header button {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21.82px;
   }
 
   .input-area {
     max-width: 1280px;
     display: flex;
     justify-content: space-between;
+    margin-top: 48px;
   }
 
   .input {
     width: 480px;
+    margin-top: 0;
   }
 
   .countries {
@@ -190,5 +317,52 @@ body.darkMode {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 75px;
+  }
+
+  .country-details {
+    max-width: 1280px;
+    margin-inline: auto;
+  }
+
+  .card-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 343px;
+  }
+  
+  .card-detail-first {
+    margin-top: 0;
+  }
+
+  .card-details img {
+    width: 560px;
+    height: 401px;
+  }
+
+  .card-details-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 68px 120px;
+  }
+
+  .border-countries-content {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .border-countries {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .borderBtn {
+    font-size: 14px;
+    line-height: 19.1px;
   }
 }
