@@ -6,7 +6,9 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState(null); // Tıklanan ülkeyi saklayan state
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false); // Tema değişikliği için
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem("isDarkMode") === "true"
+  ); // Tema değişikliği için
 
   function handleCountryClick(country) {
     setSelectedCountry(country);
@@ -21,15 +23,17 @@ function App() {
     setSelectedCountry(borderCountry);
   }
 
+  if (isDarkMode) {
+    document.body.classList.add("darkMode");
+  }
+  else {
+    document.body.classList.remove("darkMode");
+  }
+
   function changeTheme() {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
-    if (newTheme) {
-      document.body.classList.add("darkMode");
-    }
-    else {
-      document.body.classList.remove("darkMode");
-    }
+    localStorage.setItem("isDarkMode", newTheme.toString());
   }
 
   return (
