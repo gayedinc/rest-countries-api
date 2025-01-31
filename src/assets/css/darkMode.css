@@ -1,0 +1,33 @@
+body.dark-mode {
+  background-color: #202C36;
+}
+
+.dark-mode {
+  .header, 
+  input, 
+  .input, 
+  .regions, 
+  .countryItem,
+  .borderBtn,
+  .backBtn {
+    background-color: #2B3844;
+  }
+
+  .header h1,
+  input::placeholder, 
+  .regions, 
+  .card-info h2, 
+  .card-info p,
+  .borderBtn,
+  .backBtn,
+  .card-detail-first,
+  .card-detail-second,
+  .border-countries-content h4,
+  .dark-mode-btn {
+    color: #fff;
+  }
+
+  input {
+    color: #fff;
+  }
+}

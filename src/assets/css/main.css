@@ -3,25 +3,26 @@
   display: flex;
   justify-content: space-between;
   color: #111517;
+  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-.header h1 {
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 20px;
-}
-
-.header button {
+.dark-mode-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
   font-weight: 600;
   line-height: 16.37px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  background-image: url(/img/moon-icon-countries.svg);
-  background-repeat: no-repeat;
-  background-position: left center;
-  padding-left: 25px;
+}
+
+.header h1 {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 20px;
 }
 
 .input-area {
@@ -118,6 +119,10 @@
 }
 
 .backBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 0px 0px 7px 0px #0000004B;
@@ -126,10 +131,6 @@
   margin-bottom: 70px;
   border-style: none;
   width: 136px;
-  background-image: url(/img/back-icon.svg);
-  background-repeat: no-repeat;
-  background-position: 30% 50%;
-  padding-left: 39px;
 }
 
 .card-detail-first {
@@ -195,46 +196,6 @@
   font-weight: 600;
   line-height: 24px;
   color: #111517;
-}
-
-/* Dark Theme */
-
-body.darkMode {
-  background-color: #202C36;
-}
-
-.darkMode {
-  .header, 
-  input, 
-  .input, 
-  .regions, 
-  .countryItem,
-  .borderBtn,
-  .backBtn {
-    background-color: #2B3844;
-  }
-
-  .header h1, 
-  .header button, 
-  input::placeholder, 
-  .regions, 
-  .card-info h2, 
-  .card-info p,
-  .borderBtn,
-  .backBtn,
-  .card-detail-first,
-  .card-detail-second,
-  .border-countries-content h4 {
-    color: #fff;
-  }
-
-  .header button {
-    background-image: url(/img/moon-icon-dark-mode.svg);
-  }
-
-  .backBtn {
-    background-image: url(/img/back-icon-dark-mode.svg);
-  }
 }
 
 /* Tablet Start */
