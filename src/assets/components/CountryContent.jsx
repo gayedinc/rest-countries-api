@@ -15,6 +15,7 @@ export default function CountryContent({ country, region, onCountryClick }) {
       region={x.region}
       capital={x.capital}
       img={x.flags.png}
+      // {...x}
       onCountryClick={() => onCountryClick(x)} />)
 
   return (
