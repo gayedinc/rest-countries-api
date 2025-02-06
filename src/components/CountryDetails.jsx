@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
-import { DataContext } from "../../App";
+import { ThemeContext } from "../App";
+import { DataContext } from "../App";
 
 export function CountryDetails({ country, setShowDetails, onClickBorderCountry }) {
 

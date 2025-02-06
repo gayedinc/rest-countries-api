@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { DataContext } from "../../App";
+import { DataContext } from "../App";
 
 export function CountryContent({ country, region, onCountryClick }) {
 

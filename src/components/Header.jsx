@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../App";
-import { DataContext } from "../../App";
+import { ThemeContext } from "../App";
+import { DataContext } from "../App";
 
 export function Input({ setCountry, setRegion }) {
   const { data } = useContext(DataContext);

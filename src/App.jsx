@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { data } from "./assets/data/data.jsx";
-import { Header } from "./assets/components/Header.jsx";
-import { CountryContent } from "./assets/components/CountryContent.jsx";
-import { CountryDetails } from "./assets/components/CountryDetails.jsx";
+import { data } from "../public/data/data.jsx";
+import { Header } from "./components/Header.jsx";
+import { CountryContent } from "./components/CountryContent.jsx";
+import { CountryDetails } from "./components/CountryDetails.jsx";
 import "./assets/css/darkMode.css";
 
 export const DataContext = createContext(null); // tüm datayı gönderebilmek için useContext
