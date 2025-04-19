@@ -1,55 +1,55 @@
-# 🌍 Rest Countries Uygulaması
+# 🌍 Rest Countries Application
 
-> Dünyadaki ülkeleri arayabileceğiniz, filtreleyebileceğiniz ve detaylı bilgilere ulaşabileceğiniz, sade ve duyarlı (responsive) tasarıma sahip modern bir React uygulaması.
+> A modern and responsive React application where you can search, filter, and view detailed information about countries around the world.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
 
-## 🔍 Proje Özeti
+## 🔍 Project Overview
 
-**Rest Countries App**, **[Rest Countries API](https://restcountries.com/)** kullanılarak geliştirilen ve ülkelerle ilgili bilgileri dinamik olarak sunan bir React uygulamasıdır.  
-Kullanıcılar ülke adına göre arama yapabilir, bölgelere göre filtreleme gerçekleştirebilir ve seçtikleri ülkenin detaylarına ulaşabilir.
+**Rest Countries App** is a React application that dynamically displays country data using the **[Rest Countries API](https://restcountries.com/)**.  
+Users can search for countries by name, filter them by region, and view detailed information about each selected country.
 
 ![image](https://github.com/user-attachments/assets/d797e4f5-f10a-4b38-94fd-06dd40b5c515)
 
-## 🚀 Özellikler
+## 🚀 Features
 
-### 🔎 Ülke Arama ve Filtreleme
-- Gerçek zamanlı olarak ülke adına göre arama yapılabilir.
-- Dropdown menü ile kıta veya bölge bazlı filtreleme gerçekleştirilebilir.
+### 🔎 Country Search and Filtering
+- Search for countries in real-time by name.
+- Filter countries by continent or region using a dropdown menu.
 
 ![image](https://github.com/user-attachments/assets/3110be63-531a-4f78-9540-33aa87441f21)
 
-### 📄 Ülke Detay Sayfası
-- Ülke adı, nüfusu, bölgesi, başkenti, dilleri, para birimi, internet alan adı, komşu ülkeleri gibi birçok bilgiye erişim sağlanır.
-- Detay sayfasında **ülke adı animasyonla** ekrana gelir.
+### 📄 Country Detail Page
+- Displays various country information such as name, population, region, capital, languages, currency, top-level domain, and bordering countries.
+- The country name appears with an **entry animation** on the detail page.
 
 ![image](https://github.com/user-attachments/assets/02036592-dbb4-4ee4-a6ce-fc6f7e2e0947)
 
-### 🌙 Karanlık Mod Desteği
-- Açık ve koyu tema arasında geçiş yapılabilir.
-- Seçilen tema `localStorage`’a kaydedilerek oturumlar arasında kalıcılık sağlanır.
+### 🌙 Dark Mode Support
+- Users can toggle between light and dark themes.
+- The selected theme is stored in `localStorage` for persistence across sessions.
 
-![Karanlık Mod](/img/rest-countries-darkmode.png)
+![image](https://github.com/user-attachments/assets/70988e86-ec44-4222-8177-d1f41333940f)
 
-### 📱 Responsive Tasarım
-- Mobil öncelikli yapı ile tüm ekran boyutlarına uyum sağlar.
+### 📱 Responsive Design
+- Mobile-first layout that adapts smoothly to all screen sizes.
 
-### 🔗 HashRouter ile Yönlendirme
-- Sayfa geçişleri hash tabanlı URL yapısı (`#`) ile gerçekleştirilir.  
-  Bu sayede sayfalar arasında gezinme ve doğrudan bağlantı verme sağlanır.
+### 🔗 Navigation with HashRouter
+- Page transitions are handled using hash-based URL routing (`#`),  
+  allowing deep linking and bookmarking support.
 
-### 🧠 Global Tema Yönetimi (Context API ile)
-- `useContext` kullanılarak tema kontrolü ve bileşenler arası veri paylaşımı kolaylaştırılmıştır.
-- Prop drilling problemi ortadan kaldırılmıştır.
+### 🧠 Global Theme Management (with Context API)
+- Theme control and component state sharing are managed using `useContext`.
+- Eliminates the need for prop drilling between components.
 
-## 🌐 Canlı Demo
+## 🌐 Live Demo
 
 🔗 [https://rest-countries-api-taupe-rho.vercel.app](https://rest-countries-api-taupe-rho.vercel.app)
 
-## 📂 Proje Dosya Yapısı
+## 📂 Project Structure
 
 ```bash
 📦 public
@@ -58,13 +58,13 @@ Kullanıcılar ülke adına göre arama yapabilir, bölgelere göre filtreleme g
 📦 src
  ┣ 📂 assets
  ┃ ┗ 📂 css
- ┃   ┣ 📄 darkMode.css           # Karanlık tema stilleri
- ┃   ┣ 📄 main.css               # Genel stiller
- ┃   ┗ 📄 reset.css              # Tarayıcı varsayılanlarını sıfırlar
+ ┃   ┣ 📄 darkMode.css           # Dark mode styles
+ ┃   ┣ 📄 main.css               # Main stylesheet
+ ┃   ┗ 📄 reset.css              # CSS reset to normalize browser styles
  ┣ 📂 components
- ┃ ┣ 📄 CountryContent.jsx      # Ülkelerin listelendiği ana bileşen
- ┃ ┣ 📄 CountryDetails.jsx      # Detay sayfası bileşeni
- ┃ ┗ 📄 Header.jsx              # Uygulama üst çubuğu ve filtre alanı
- ┣ 📄 App.jsx                   # Ana uygulama bileşeni
- ┣ 📄 main.jsx                  # React DOM giriş noktası
-┗ 📄 index.html                 # HTML şablonu
+ ┃ ┣ 📄 CountryContent.jsx      # Main component displaying country cards
+ ┃ ┣ 📄 CountryDetails.jsx      # Component for country detail page
+ ┃ ┗ 📄 Header.jsx              # App header and filtering section
+ ┣ 📄 App.jsx                   # Root component of the app
+ ┣ 📄 main.jsx                  # React DOM entry point
+┗ 📄 index.html                 # HTML template
