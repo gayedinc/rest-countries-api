@@ -1,30 +1,70 @@
 # 🌍 Rest Countries Uygulaması
 
-Bu proje dünya üzerindeki ülkelerle ilgili bilgileri dinamik bir şekilde görüntüleyen bir React uygulamasıdır. Kullanıcılar ülkeleri arayabilir, bölgelere göre filtreleyebilir ve seçtikleri ülkeler hakkında detaylı bilgilere ulaşabilir. Aşağıda projede kullandığım bazı önemli teknikleri ve özellikleri bulabilirsiniz:
+> Dünyadaki ülkeleri arayabileceğiniz, filtreleyebileceğiniz ve detaylı bilgilere ulaşabileceğiniz, sade ve duyarlı (responsive) tasarıma sahip modern bir React uygulaması.
 
-## Kullanılan Teknikler ve Özellikler
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
 
-- **Ülke Arama ve Filtreleme:**  
-  Kullanıcılar ülkeler arasında arama yaparak istedikleri ülkeyi hızlıca bulabiliyor. Ayrıca bölgeler arası filtreleme yaparak yalnızca ilgilendikleri bölgedeki ülkeleri görüntüleyebiliyorlar.
+## 🔍 Proje Özeti
 
-- **Kapsamlı Ülke Detayları:**  
-  Her ülke seçildiğinde kullanıcılar o ülkenin adı, nüfusu, bölgesi, başkenti gibi bilgilerin yanı sıra dil, para birimi, internet alan adı ve komşu ülkeler gibi daha fazla bilgiye erişebiliyor.
+**Rest Countries App**, **[Rest Countries API](https://restcountries.com/)** kullanılarak geliştirilen ve ülkelerle ilgili bilgileri dinamik olarak sunan bir React uygulamasıdır.  
+Kullanıcılar ülke adına göre arama yapabilir, bölgelere göre filtreleme gerçekleştirebilir ve seçtikleri ülkenin detaylarına ulaşabilir.
 
-- **Karanlık Mod Desteği:**  
-  Kullanıcıların uygulama deneyimini kişiselleştirebilmeleri için karanlık mod desteği ekledim. Tema değişikliği yerel depolama (localStorage) sayesinde sayfa yenilendiğinde bile korunuyor.
+![image](https://github.com/user-attachments/assets/d797e4f5-f10a-4b38-94fd-06dd40b5c515)
 
-- **Responsive Tasarım:**  
-  Projeyi mobil öncelikli responsive bir tasarımla geliştirdim. Hem masaüstü hem de mobil cihazlarda kullanıcı dostu bir deneyim sunacak şekilde optimize ettim.
+## 🚀 Özellikler
 
-- **Veri Kaynağı:**  
-  Ülke verileri **Rest Countries API** üzerinden alındı ve uygulama içerisinde dinamik olarak kullanıldı.
+### 🔎 Ülke Arama ve Filtreleme
+- Gerçek zamanlı olarak ülke adına göre arama yapılabilir.
+- Dropdown menü ile kıta veya bölge bazlı filtreleme gerçekleştirilebilir.
 
-- **Hash Router Yapısı:**  
-  Uygulama içerisinde hash tabanlı yönlendirme kullanarak kullanıcıların sayfa geçişlerinde URL'lerin düzgün şekilde yönetilmesini sağladım.
+![image](https://github.com/user-attachments/assets/3110be63-531a-4f78-9540-33aa87441f21)
 
-- **useContext ile Tema ve Component Yönetimi:**  
-  Tema ve bileşen yönetimini daha verimli ve dinamik bir şekilde yapmak için `useContext` hook'u kullanarak global state yönetimini kolaylaştırdım.
+### 📄 Ülke Detay Sayfası
+- Ülke adı, nüfusu, bölgesi, başkenti, dilleri, para birimi, internet alan adı, komşu ülkeleri gibi birçok bilgiye erişim sağlanır.
+- Detay sayfasında **ülke adı animasyonla** ekrana gelir.
 
-## Hedefler
+![image](https://github.com/user-attachments/assets/02036592-dbb4-4ee4-a6ce-fc6f7e2e0947)
 
-Bu projede React'in temel özelliklerini kullanarak interaktif ve kullanıcı dostu bir deneyim yaratmayı, dünya ülkelerine dair bilgileri kolayca erişilebilir ve etkileşimli bir şekilde sunmayı hedefledim.
+### 🌙 Karanlık Mod Desteği
+- Açık ve koyu tema arasında geçiş yapılabilir.
+- Seçilen tema `localStorage`’a kaydedilerek oturumlar arasında kalıcılık sağlanır.
+
+![Karanlık Mod](/img/rest-countries-darkmode.png)
+
+### 📱 Responsive Tasarım
+- Mobil öncelikli yapı ile tüm ekran boyutlarına uyum sağlar.
+
+### 🔗 HashRouter ile Yönlendirme
+- Sayfa geçişleri hash tabanlı URL yapısı (`#`) ile gerçekleştirilir.  
+  Bu sayede sayfalar arasında gezinme ve doğrudan bağlantı verme sağlanır.
+
+### 🧠 Global Tema Yönetimi (Context API ile)
+- `useContext` kullanılarak tema kontrolü ve bileşenler arası veri paylaşımı kolaylaştırılmıştır.
+- Prop drilling problemi ortadan kaldırılmıştır.
+
+## 🌐 Canlı Demo
+
+🔗 [https://rest-countries-api-taupe-rho.vercel.app](https://rest-countries-api-taupe-rho.vercel.app)
+
+## 📂 Proje Dosya Yapısı
+
+```bash
+📦 public
+ ┗ 📂 img
+
+📦 src
+ ┣ 📂 assets
+ ┃ ┗ 📂 css
+ ┃   ┣ 📄 darkMode.css           # Karanlık tema stilleri
+ ┃   ┣ 📄 main.css               # Genel stiller
+ ┃   ┗ 📄 reset.css              # Tarayıcı varsayılanlarını sıfırlar
+ ┣ 📂 components
+ ┃ ┣ 📄 CountryContent.jsx      # Ülkelerin listelendiği ana bileşen
+ ┃ ┣ 📄 CountryDetails.jsx      # Detay sayfası bileşeni
+ ┃ ┗ 📄 Header.jsx              # Uygulama üst çubuğu ve filtre alanı
+ ┣ 📄 App.jsx                   # Ana uygulama bileşeni
+ ┣ 📄 main.jsx                  # React DOM giriş noktası
+┗ 📄 index.html                 # HTML şablonu
