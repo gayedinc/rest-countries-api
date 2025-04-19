@@ -30,40 +30,83 @@
   margin-inline: auto;
 }
 
-.input {
-  display: flex;
-  align-items: center;
+.search-wrapper {
+  position: relative;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 2px 9px 0px #0000000E;
   margin-bottom: 40px;
   margin-top: 24px;
+  width: 100%;
+  max-width: 400px;
 }
 
-.input input {
+.search-wrapper input {
+  width: 100%;
   padding-block: 14px;
+  padding-left: 68px;
   border: none;
   outline: none;
   font-size: 12px;
   line-height: 20px;
+  border-radius: 5px;
+  background-color: transparent;
+  box-sizing: border-box;
 }
 
-.input img {
-  margin-left: 32px;
-  margin-right: 26px;
+.search-wrapper .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
 }
 
-.select-area select {
+.dropdown {
+  position: relative;
   width: 200px;
-  height: 48px;
-  border-radius: 5px;
+  font-family: inherit;
+}
+
+.dropdown-toggle {
+  width: 200px;
+  padding: 14px 16px;
+  background-color: #fff;
   border: none;
-  outline: none;
-  font-size: 12px;
-  line-height: 20px;
-  padding: 14px 24px;
   border-radius: 5px;
-  box-shadow: 0px 2px 9px 0px #0000000e;
+  box-shadow: 0px 2px 9px 0px #0000000E;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-toggle .arrow {
+  font-size: 12px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0px 2px 9px 0px #0000000E;
+  border-radius: 5px;
+  z-index: 10;
+  padding: 8px 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+  list-style: none;
 }
 
 .countries {
@@ -85,11 +128,6 @@
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.countryItem:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeInUp {
@@ -179,17 +217,34 @@
   100% { transform: translateX(0); }
 }
 
-.card-detail-first {
-  margin-top: 44px;
-  margin-bottom: 32px;
-  color: #111517;
-}
-
-.card-detail-first h1 {
+.card-details-info h1 {
+  display: inline-block;
   font-size: 22px;
   font-weight: 800;
   line-height: 30.01px;
   margin-bottom: 16px;
+  color: #111517;
+}
+
+h1 span.letter-fade {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Her harf için animasyon tanımı */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-detail-first {
+  margin-top: 44px;
+  margin-bottom: 32px;
+  color: #111517;
 }
 
 .card-detail-first p, .card-detail-second {
@@ -217,6 +272,13 @@
   flex-direction: column;
   gap: 16px;
   margin-bottom: 60px;
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #111517;
+  }
 }
 
 .border-countries {
@@ -237,10 +299,11 @@
   color: #111517;
 }
 
-.border-countries-content h4 {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
+.no-border-cntry p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 32px;
+  letter-spacing: 0px;
   color: #111517;
 }
 
@@ -248,10 +311,20 @@
 
 @media (width >= 768px) {
 
+  .countryItem:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .dropdown-menu li:hover {
+    background-color: #f2f2f2;
+  }
+
   .input-area {
     max-width: 688px;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
   }
 
   .countries {
@@ -339,10 +412,6 @@
     align-items: flex-start;
     margin-bottom: 343px;
   }
-  
-  .card-detail-first {
-    margin-top: 0;
-  }
 
   .card-details img {
     width: 560px;
@@ -352,12 +421,30 @@
   .card-details-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 68px 120px;
+    align-items: start;
+    gap: 32px 64px;
+
+    h1 {
+      grid-column: 1 / -1;
+      margin-bottom: 24px;
+    }
+  }
+
+  .card-detail-first {
+    margin-block: 0;
+    grid-column: 1;
+  }
+
+  .card-detail-second {
+    margin-bottom: 34px;
+    color: #111517;
+    grid-column: 2;
   }
 
   .border-countries-content {
-    display: flex;
-    gap: 16px;
+    flex-direction: row;
+    align-items: center;
+    grid-column: 1 / -1;
   }
   
   .border-countries {

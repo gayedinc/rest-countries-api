@@ -88,7 +88,11 @@ function App() {
           <Header handleChangeTheme={handleChangeTheme} setRegion={setRegion} setCountry={setCountry} showDetails={showDetails} />
           {showDetails ? (
             <>
-              <CountryDetails country={selectedCountry} setShowDetails={setShowDetails} onClickBorderCountry={handleBorderCountryClick} />
+              <CountryDetails
+                key={selectedCountry?.cca3}
+                country={selectedCountry}
+                setShowDetails={setShowDetails}
+                onClickBorderCountry={handleBorderCountryClick} />
             </>
           ) : (
             <>

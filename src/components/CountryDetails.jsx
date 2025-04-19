@@ -17,8 +17,18 @@ export function CountryDetails({ country, setShowDetails, onClickBorderCountry }
         <div className="card-details">
           <img src={country.flags.png} alt={country.name} />
           <div className="card-details-info">
+            <h1>
+              {country.name.common.split("").map((char, i) => (
+                <span
+                  key={i}
+                  className={`letter-fade${char === " " ? " space" : ""}`}
+                  style={{ animationDelay: `${i * 0.05}s` }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </h1>
             <div className="card-detail-first">
-              <h1>{country.name.common}</h1>
               <p><strong>Native Name: </strong>{country.name.official}</p>
               <p><strong>Population:</strong>{country.population}</p>
               <p><strong>Region: </strong>{country.region}</p>
@@ -39,7 +49,6 @@ export function CountryDetails({ country, setShowDetails, onClickBorderCountry }
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>
@@ -50,19 +59,27 @@ export function BorderCountries({ borders, onClickBorderCountry }) {
 
   const { data } = useContext(DataContext);
 
-  return borders ?
-    borders.map((x) => {
-      const countryData = data.find((y) => y.cca3 === x);
-      return (
-        <button onClick={() => {
-          location.hash = `/detail/${countryData?.cca3}`
-          onClickBorderCountry(countryData);
-        }}
-          key={x}
-          className="borderBtn">
-          {countryData.name.common}
-        </button>
-      );
-    })
-    : "";
+  return (
+    <>
+      {borders && borders.length > 0
+        ? borders.map((x) => {
+          const countryData = data.find((y) => y.cca3 === x);
+          return (
+            <button
+              onClick={() => {
+                location.hash = `/detail/${countryData?.cca3}`;
+                onClickBorderCountry(countryData);
+              }}
+              key={x}
+              className="borderBtn"
+            >
+              {countryData?.name?.common}
+            </button>
+          );
+        })
+        : <div className="no-border-cntry">
+          <p>This country does not share borders with any other countries.</p>
+        </div>}
+    </>
+  )
 }

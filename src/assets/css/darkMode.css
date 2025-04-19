@@ -5,17 +5,19 @@ body.dark-mode {
 .dark-mode {
   .header, 
   input, 
-  .input, 
-  .regions, 
+  .search-wrapper input, 
+  .dropdown-toggle,
+  .dropdown-menu,
   .countryItem,
   .borderBtn,
   .backBtn {
     background-color: #2B3844;
   }
 
-  .header h1,
+  .card-details-info h1,
   input::placeholder, 
-  .regions, 
+  .dropdown-toggle,
+  .dropdown-menu,
   .card-info h2, 
   .card-info p,
   .borderBtn,
@@ -23,8 +25,13 @@ body.dark-mode {
   .card-detail-first,
   .card-detail-second,
   .border-countries-content h4,
-  .dark-mode-btn {
+  .dark-mode-btn,
+  .no-border-cntry p {
     color: #fff;
+  }
+
+  .dropdown-menu li:hover {
+    background-color: #49525a;
   }
 
   input {
