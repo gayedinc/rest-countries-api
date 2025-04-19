@@ -23,6 +23,7 @@
   font-size: 14px;
   font-weight: 800;
   line-height: 20px;
+  color: #111517;
 }
 
 .input-area {
@@ -306,6 +307,7 @@ h1 span.letter-fade {
   padding-block: 6px;
   width: 96px;
   color: #111517;
+  cursor: pointer;
 }
 
 .no-border-cntry p {

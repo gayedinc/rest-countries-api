@@ -15,6 +15,7 @@ body.dark-mode {
   }
 
   .card-details-info h1,
+  .header h1,
   input::placeholder, 
   .dropdown-toggle,
   .dropdown-menu,
