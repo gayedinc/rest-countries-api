@@ -23,7 +23,7 @@ Users can search for countries by name, filter them by region, and view detailed
 ![image](https://github.com/user-attachments/assets/3110be63-531a-4f78-9540-33aa87441f21)
 
 ### 📄 Country Detail Page
-- Displays various country information such as name, population, region, capital, languages, currency, top-level domain, and bordering countries.
+- Displays country information such as name, population, region, capital, languages, currency, top-level domain, and bordering countries.
 - The country name appears with an **entry animation** on the detail page.
 
 ![image](https://github.com/user-attachments/assets/8459b856-779a-4f56-9e5a-a7cdfd90d2ce)
