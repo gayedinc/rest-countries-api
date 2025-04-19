@@ -26,7 +26,7 @@ Users can search for countries by name, filter them by region, and view detailed
 - Displays various country information such as name, population, region, capital, languages, currency, top-level domain, and bordering countries.
 - The country name appears with an **entry animation** on the detail page.
 
-![image](https://github.com/user-attachments/assets/02036592-dbb4-4ee4-a6ce-fc6f7e2e0947)
+![image](https://github.com/user-attachments/assets/8459b856-779a-4f56-9e5a-a7cdfd90d2ce)
 
 ### 🌙 Dark Mode Support
 - Users can toggle between light and dark themes.
