@@ -2,6 +2,11 @@ body.dark-mode {
   background-color: #202C36;
 }
 
+.dark-mode ::selection {
+  background-color: #ffffff;
+  color: #111517;
+}
+
 .dark-mode {
   .header, 
   input, 
